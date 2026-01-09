@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Temel Tekrar - Frontend Koordinatörü</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>🚀 JavaScript Temel Tekrar</h1>
+        <div class="timer">
+           📍 React Öncesi Son Tekrar
+        </div>
+      </header>
+
+      <div class="time-management">
+        <h2>⏰ Ders Akış Zamanlaması</h2>
+        <div class="progress-bar">
+          <div class="progress" id="progressBar"></div>
+        </div>
+        <div class="time-slots">
+          <div class="time-slot active" id="slot1">
+            <strong>BÖLÜM 1 :</strong> JavaScript Temelleri
+          </div>
+          <div class="time-slot" id="slot2">
+            <strong>BÖLÜM 2 :</strong> Fonksiyonlar & Diziler
+          </div>
+          <div class="time-slot" id="slot3">
+            <strong>BÖLÜM 3 :</strong> Modern JS & React Bağlantısı
+          </div>
+        </div>
+      </div>
+
+      <div class="sections-grid">
+        <!-- BÖLÜM 1 -->
+        <div class="section">
+          <div class="section-header" onclick="scrollToSection(1)">
+            <div class="section-number">1</div>
+            <div class="section-title">Değişkenler & Veri Tipleri</div>
+            <div class="time-badge">10 dk</div>
+          </div>
+
+          <div class="code-block">
+            <span class="code-comment"
+              >// NEDEN: Farklı veri türlerini yönetmek için</span
+            ><br />
+            <br />
+            <span class="code-keyword">let</span> degisebilir =
+            <span class="code-string">"React'ta state için kullanılır"</span
+            >;<br />
+            <span class="code-keyword">const</span> sabit =
+            <span class="code-string">"Component'lar ve sabit değerler"</span
+            >;<br />
+            <span class="code-comment"
+              >// var KULLANMIYORUZ! (Eski, problemli)</span
+            ><br />
+            <br />
+            <span class="code-comment">// NEDEN farklı tipler?</span><br />
+            <span class="code-keyword">const</span> isim =
+            <span class="code-string">"Ahmet"</span>;
+            <span class="code-comment">// String: Metinler</span><br />
+            <span class="code-keyword">const</span> yas =
+            <span class="code-number">25</span>;
+            <span class="code-comment">// Number: Sayılar</span><br />
+            <span class="code-keyword">const</span> aktifMi =
+            <span class="code-keyword">true</span>;
+            <span class="code-comment">// Boolean: true/false</span><br />
+            <span class="code-keyword">const</span> sayilar = [<span
+              class="code-number"
+              >1</span
+            >, <span class="code-number">2</span>,
+            <span class="code-number">3</span>];
+            <span class="code-comment">// Array: Liste</span><br />
+            <span class="code-keyword">const</span> kullanici = {
+            <span class="code-comment">// Object: Anahtar-değer</span><br />
+            &nbsp;&nbsp;ad: <span class="code-string">"Ahmet"</span>,<br />
+            &nbsp;&nbsp;yas: <span class="code-number">25</span><br />
+            };
+          </div>
+
+          <div class="explanation">
+            <strong>📚 NEDEN ÖNEMLİ?</strong><br />
+            • <span class="highlight">const</span> ile tanımla, gerekirse
+            <span class="highlight">let</span> kullan<br />
+            • React'ta <span class="highlight">var</span> asla kullanma!<br />
+            • Her veri tipi farklı işlemler için optimize edilmiştir
+          </div>
+
+          <div class="live-demo">
+            <div class="demo-title">🎮 Canlı Deneme</div>
+            <input
+              type="text"
+              id="degiskenInput"
+              placeholder="Bir değer yazın"
+            />
+            <button onclick="degiskenDeneme()">Tipini Kontrol Et</button>
+            <div class="result" id="degiskenResult"></div>
+          </div>
+        </div>
+
+        <!-- BÖLÜM 2 -->
+        <div class="section">
+          <div class="section-header" onclick="scrollToSection(2)">
+            <div class="section-number">2</div>
+            <div class="section-title">Fonksiyonlar</div>
+            <div class="time-badge">10 dk</div>
+          </div>
+
+          <div class="code-block">
+            <span class="code-comment">// 1. Regular Function</span><br />
+            <span class="code-keyword">function</span>
+            <span class="code-function">topla</span>(a, b) {<br />
+            &nbsp;&nbsp;<span class="code-keyword">return</span> a + b;<br />
+            }<br />
+            <br />
+            <span class="code-comment">// 2. Arrow Function (REACT'TA BU!)</span
+            ><br />
+            <span class="code-keyword">const</span> carp = (a, b) => {<br />
+            &nbsp;&nbsp;<span class="code-keyword">return</span> a * b;<br />
+            };<br />
+            <br />
+            <span class="code-comment">// Kısa hali:</span><br />
+            <span class="code-keyword">const</span> kareAl = x => x * x;<br />
+            <br />
+            <span class="code-comment"
+              >// 3. Callback Function (Event listener'lar için)</span
+            ><br />
+            <span class="code-keyword">const</span> butonTikla = () => {<br />
+            &nbsp;&nbsp;console.<span class="code-function">log</span>(<span
+              class="code-string"
+              >"Butona tıklandı!"</span
+            >);<br />
+            };
+          </div>
+
+          <div class="explanation">
+            <strong>🎯 REACT BAĞLANTISI:</strong><br />
+            • Component'lar arrow function olarak yazılır<br />
+            • Event handler'lar arrow function olur<br />
+            • <span class="highlight">this</span> problemi olmaz (arrow
+            function'da)
+          </div>
+
+          <div class="react-connection">
+            <span class="react-icon">⚛️ React Örneği:</span><br />
+            <code
+              >const Button = ({ onClick, text }) => ( <br />
+              &nbsp;&nbsp;&lt;button onClick={() =>
+              onClick()}>&gt;{text}&lt;/button&gt;<br />
+              );</code
+            >
+          </div>
+
+          <div class="live-demo">
+            <div class="demo-title">🔧 Fonksiyon Testi</div>
+            <input type="number" id="sayi1" placeholder="Sayı 1" value="5" />
+            <input type="number" id="sayi2" placeholder="Sayı 2" value="3" />
+            <button onclick="fonksiyonTest()">Topla ve Çarp</button>
+            <div class="result" id="fonksiyonResult"></div>
+          </div>
+        </div>
+
+        <!-- BÖLÜM 3 -->
+        <div class="section">
+          <div class="section-header" onclick="scrollToSection(3)">
+            <div class="section-number">3</div>
+            <div class="section-title">Dizi Metotları</div>
+            <div class="time-badge">10 dk</div>
+          </div>
+
+          <div class="code-block">
+            <span class="code-keyword">const</span> urunler = [<br />
+            &nbsp;&nbsp;{ id: <span class="code-number">1</span>, ad:
+            <span class="code-string">"Laptop"</span>, fiyat:
+            <span class="code-number">15000</span> },<br />
+            &nbsp;&nbsp;{ id: <span class="code-number">2</span>, ad:
+            <span class="code-string">"Telefon"</span>, fiyat:
+            <span class="code-number">8000</span> },<br />
+            &nbsp;&nbsp;{ id: <span class="code-number">3</span>, ad:
+            <span class="code-string">"Tablet"</span>, fiyat:
+            <span class="code-number">5000</span> }<br />
+            ];<br />
+            <br />
+            <span class="code-comment"
+              >// 1. map() - REACT'TA EN ÇOK KULLANILAN</span
+            ><br />
+            <span class="code-keyword">const</span> urunIsimleri = urunler.<span
+              class="code-function"
+              >map</span
+            >(urun => urun.ad);<br />
+            <br />
+            <span class="code-comment">// 2. filter() - Filtreleme için</span
+            ><br />
+            <span class="code-keyword">const</span> pahaliUrunler =
+            urunler.<span class="code-function">filter</span>(u => u.fiyat >
+            <span class="code-number">10000</span>);<br />
+            <br />
+            <span class="code-comment">// 3. find() - Tek eleman bulma</span
+            ><br />
+            <span class="code-keyword">const</span> laptop = urunler.<span
+              class="code-function"
+              >find</span
+            >(u => u.ad === <span class="code-string">"Laptop"</span>);
+          </div>
+
+          <div class="explanation">
+            <strong>🔥 CRİTİK ÖNEM:</strong><br />
+            • React'ta listeleri render etmek için
+            <span class="highlight">map()</span> kullanılır<br />
+            • State'den filtreleme için <span class="highlight">filter()</span
+            ><br />
+            • Her elemana unique <span class="highlight">key</span> prop'u
+            vermeyi unutma!
+          </div>
+
+          <div class="live-demo">
+            <div class="demo-title">📊 Dizi İşlemleri</div>
+            <button onclick="diziMap()">map() Çalıştır</button>
+            <button onclick="diziFilter()">filter() Çalıştır</button>
+            <button onclick="diziFind()">find() Çalıştır</button>
+            <div class="result" id="diziResult"></div>
+          </div>
+        </div>
+
+        <!-- BÖLÜM 4 -->
+        <div class="section">
+          <div class="section-header" onclick="scrollToSection(4)">
+            <div class="section-number">4</div>
+            <div class="section-title">Destructuring</div>
+            <div class="time-badge">10 dk</div>
+          </div>
+
+          <div class="code-block">
+            <span class="code-comment">// 1. Objeden değer çıkarma</span><br />
+            <span class="code-keyword">const</span> kullanici = {<br />
+            &nbsp;&nbsp;ad: <span class="code-string">"Ayşe"</span>,<br />
+            &nbsp;&nbsp;yas: <span class="code-number">30</span>,<br />
+            &nbsp;&nbsp;sehir: <span class="code-string">"İstanbul"</span><br />
+            };<br />
+            <br />
+            <span class="code-comment">// ES5 (Eski yol):</span><br />
+            <span class="code-keyword">const</span> ad = kullanici.ad;<br />
+            <span class="code-keyword">const</span> yas = kullanici.yas;<br />
+            <br />
+            <span class="code-comment">// ES6 (Modern yol - REACT'TA BU!):</span
+            ><br />
+            <span class="code-keyword">const</span> { ad, yas, sehir } =
+            kullanici;<br />
+            <br />
+            <span class="code-comment">// 2. Diziden değer çıkarma</span><br />
+            <span class="code-keyword">const</span> sayilar = [<span
+              class="code-number"
+              >1</span
+            >, <span class="code-number">2</span>,
+            <span class="code-number">3</span>];<br />
+            <span class="code-keyword">const</span> [birinci, ikinci] = sayilar;
+          </div>
+
+          <div class="explanation">
+            <strong>💡 REACT'TA NASIL KULLANILIR?</strong><br />
+            • Props'ları alırken: <code>({ prop1, prop2 })</code><br />
+            • useState'ten değer alırken: <code>const [state, setState]</code
+            ><br />
+            • Clean ve okunabilir kod için şart!
+          </div>
+
+          <div class="react-connection">
+            <span class="react-icon">⚛️ React Örneği:</span><br />
+            <code
+              >function UserCard({ name, age, email }) {<br />
+              &nbsp;&nbsp;// Props'lar direkt kullanılabilir<br />
+              &nbsp;&nbsp;return &lt;div&gt;{name} - {age}&lt;/div&gt;;<br />
+              }</code
+            >
+          </div>
+
+          <div class="live-demo">
+            <div class="demo-title">🧩 Destructuring Test</div>
+            <button onclick="destructuringTest()">
+              Destructuring Çalıştır
+            </button>
+            <div class="result" id="destructuringResult"></div>
+          </div>
+        </div>
+
+        <!-- BÖLÜM 5 -->
+        <div class="section">
+          <div class="section-header" onclick="scrollToSection(5)">
+            <div class="section-number">5</div>
+            <div class="section-title">Spread Operator</div>
+            <div class="time-badge">10 dk</div>
+          </div>
+
+          <div class="code-block">
+            <span class="code-comment">// 1. Dizilerde Kullanım</span><br />
+            <span class="code-keyword">const</span> dizi1 = [<span
+              class="code-number"
+              >1</span
+            >, <span class="code-number">2</span>,
+            <span class="code-number">3</span>];<br />
+            <span class="code-keyword">const</span> dizi2 = [<span
+              class="code-number"
+              >4</span
+            >, <span class="code-number">5</span>,
+            <span class="code-number">6</span>];<br />
+            <span class="code-keyword">const</span> birlesik = [...dizi1,
+            ...dizi2];<br />
+            <br />
+            <span class="code-comment"
+              >// 2. Objelerde Kullanım (REACT STATE İÇİN CRİTİK!)</span
+            ><br />
+            <span class="code-keyword">const</span> kullanici = { ad:
+            <span class="code-string">"Ali"</span>, yas:
+            <span class="code-number">25</span> };<br />
+            <span class="code-keyword">const</span> guncellenmis = {<br />
+            &nbsp;&nbsp;...kullanici,
+            <span class="code-comment">// eski değerleri koru</span><br />
+            &nbsp;&nbsp;yas: <span class="code-number">26</span>
+            <span class="code-comment">// sadece yas'ı güncelle</span><br />
+            };<br />
+            <br />
+            <span class="code-comment">// 3. Fonksiyon parametrelerinde</span
+            ><br />
+            <span class="code-keyword">const</span> sayilariTopla = (...sayilar)
+            => {<br />
+            &nbsp;&nbsp;<span class="code-keyword">return</span> sayilar.<span
+              class="code-function"
+              >reduce</span
+            >((toplam, sayi) => toplam + sayi,
+            <span class="code-number">0</span>);<br />
+            };
+          </div>
+
+          <div class="explanation">
+            <strong>⚠️ REACT'TA NEDEN ÖNEMLİ?</strong><br />
+            • State'i <span class="highlight">immutably</span> güncellemek
+            için<br />
+            • Eski state'i koruyarak yenisini oluşturma<br />
+            • setState'te spread operator şart!
+          </div>
+
+          <div class="react-connection">
+            <span class="react-icon">⚛️ React State Örneği:</span><br />
+            <code
+              >const [user, setUser] = useState({ name: "", age: 0 });<br />
+              <br />
+              const updateUser = () => {<br />
+              &nbsp;&nbsp;setUser(prev => ({<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;...prev, // eski değerleri koru<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;age: prev.age + 1 // sadece age'i
+              güncelle<br />
+              &nbsp;&nbsp;}));<br />
+              };</code
+            >
+          </div>
+
+          <div class="live-demo">
+            <div class="demo-title">✨ Spread Test</div>
+            <button onclick="spreadTest()">Spread Operatörünü Dene</button>
+            <div class="result" id="spreadResult"></div>
+          </div>
+        </div>
+
+        <!-- BÖLÜM 6 -->
+        <div class="section">
+          <div class="section-header" onclick="scrollToSection(6)">
+            <div class="section-number">6</div>
+            <div class="section-title">Async/Await</div>
+            <div class="time-badge">10 dk</div>
+          </div>
+
+          <div class="code-block">
+            <span class="code-comment"
+              >// NEDEN: API çağrıları için (React'ta çok kullanılır)</span
+            ><br />
+            <br />
+            <span class="code-comment">// 1. Promise (Temel)</span><br />
+            <span class="code-keyword">const</span> veriGetir = () => {<br />
+            &nbsp;&nbsp;<span class="code-keyword">return new</span>
+            Promise((resolve, reject) => {<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;setTimeout(() => {<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resolve(<span
+              class="code-string"
+              >"Veriler yüklendi!"</span
+            >);<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;},
+            <span class="code-number">1000</span>);<br />
+            &nbsp;&nbsp;});<br />
+            };<br />
+            <br />
+            <span class="code-comment"
+              >// 2. Async/Await (MODERN - REACT'TA BU!)</span
+            ><br />
+            <span class="code-keyword">async</span>
+            <span class="code-keyword">function</span>
+            <span class="code-function">verileriYukle</span>() {<br />
+            &nbsp;&nbsp;<span class="code-keyword">try</span> {<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;console.<span class="code-function"
+              >log</span
+            >(<span class="code-string">"Yükleniyor..."</span>);<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">const</span>
+            sonuc = <span class="code-keyword">await</span>
+            <span class="code-function">veriGetir</span>();<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;console.<span class="code-function"
+              >log</span
+            >(sonuc);<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span>
+            sonuc;<br />
+            &nbsp;&nbsp;} <span class="code-keyword">catch</span> (hata) {<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;console.<span class="code-function"
+              >error</span
+            >(<span class="code-string">"Hata:"</span>, hata);<br />
+            &nbsp;&nbsp;}<br />
+            }
+          </div>
+
+          <div class="explanation">
+            <strong>🌐 REACT'TA KULLANIMI:</strong><br />
+            • <span class="highlight">useEffect</span> içinde API çağrıları<br />
+            • <span class="highlight">async/await</span> ile temiz kod<br />
+            • Hata yönetimi için <span class="highlight">try/catch</span>
+          </div>
+
+          <div class="react-connection">
+            <span class="react-icon">⚛️ React useEffect Örneği:</span><br />
+            <code
+              >useEffect(() => {<br />
+              &nbsp;&nbsp;const fetchData = async () => {<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;try {<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const response = await
+              axios.get('/api/data');<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setData(response.data);<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;} catch (error) {<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.error(error);<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;}<br />
+              &nbsp;&nbsp;};<br />
+              &nbsp;&nbsp;fetchData();<br />
+              }, []);</code
+            >
+          </div>
+
+          <div class="live-demo">
+            <div class="demo-title">⏳ Async Test</div>
+            <button onclick="asyncTest()">API Simülasyonu Çalıştır</button>
+            <div class="result" id="asyncResult"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section" style="grid-column: 1 / -1">
+        <div class="section-header">
+          <div class="section-number">🎯</div>
+          <div class="section-title">React için JavaScript Özeti</div>
+        </div>
+
+        <div
+          style="
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+          "
+        >
+          <div class="explanation">
+            <strong>✅ REACT'TA HER ZAMAN KULLAN:</strong><br />
+            • Arrow functions<br />
+            • const / let (var asla!)<br />
+            • Template literals (`${deger}`)<br />
+            • Destructuring<br />
+            • Spread operator (...)<br />
+            • Array methods (map/filter)
+          </div>
+
+          <div class="explanation">
+            <strong>🚫 REACT'TA ASLA YAPMA:</strong><br />
+            • var kullanma<br />
+            • State'i direkt değiştirme<br />
+            • Key'siz listeler render etme<br />
+            • Async fonksiyonları useEffect callback'ine verme<br />
+            • Prop'ları direkt değiştirme
+          </div>
+
+          <div class="explanation">
+            <strong>⚡ HIZLI TÜYOLAR:</strong><br />
+            1. Component: Arrow function<br />
+            2. Props: Destructuring ile al<br />
+            3. State: Spread ile güncelle<br />
+            4. Listeler: map() + key<br />
+            5. API: async/await + try/catch
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <p>
+            <div class="str-furkan">
+   <strong>Furkan Taşdemir</strong>
+            </div>
+        <br />
+          Frontend Teknik Koordinatörü - JavaScript Temel Tekrar | 1.5 Saatlik
+          Yoğun Program
+        </p>
+        <p>
+          📍 Şimdi React öğrenmeye hazırsınız! Bu konuları bilmeden React'a
+          geçmeyin.
+        </p>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
